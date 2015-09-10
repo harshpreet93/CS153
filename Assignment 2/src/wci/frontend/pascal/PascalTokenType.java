@@ -1,4 +1,4 @@
-package wci.frontend.java;
+package wci.frontend.pascal;
 
 import java.util.Hashtable;
 import java.util.HashSet;
@@ -13,7 +13,7 @@ import wci.frontend.TokenType;
  * <p>Copyright (c) 2009 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
-public enum JavaTokenType implements TokenType
+public enum PascalTokenType implements TokenType
 {
     // Reserved words.
     AND, ARRAY, BEGIN, CASE, CONST, DIV, DO, DOWNTO, ELSE, END,
@@ -44,7 +44,7 @@ public enum JavaTokenType implements TokenType
     /**
      * Constructor.
      */
-    JavaTokenType()
+    PascalTokenType()
     {
         this.text = this.toString().toLowerCase();
     }
@@ -53,7 +53,7 @@ public enum JavaTokenType implements TokenType
      * Constructor.
      * @param text the token text.
      */
-    JavaTokenType(String text)
+    PascalTokenType(String text)
     {
         this.text = text;
     }
