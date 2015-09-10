@@ -16,28 +16,34 @@ import wci.frontend.TokenType;
 public enum JavaTokenType implements TokenType
 {
     // Reserved words.
-    AND, ARRAY, BEGIN, CASE, CONST, DIV, DO, DOWNTO, ELSE, END,
-    FILE, FOR, FUNCTION, GOTO, IF, IN, LABEL, MOD, NIL, NOT,
-    OF, OR, PACKED, PROCEDURE, PROGRAM, RECORD, REPEAT, SET,
-    THEN, TO, TYPE, UNTIL, VAR, WHILE, WITH,
+    ABSTRACT, BREAK, CASE, CHAR, CLASS, CONST, CONTINUE, DO, DOUBLE, ELSE,
+    ENUM, EXTENDS, FLOAT, FOR, GOTO, IF, INT, LONG, NATIVE, RETURN,
+    SHORT, PACKAGE, PROTECTED, STATIC, SWITCH, SUPER, THIS, THROW,
+    VOID, VOLATILE, WHILE,
 
     // Special symbols.
     
-    PLUS("+"), MINUS("-"), STAR("*"), SLASH("/"), COLON_EQUALS(":="),
-    DOT("."), COMMA(","), SEMICOLON(";"), COLON(":"), QUOTE("'"),
-    EQUALS("="), NOT_EQUALS("<>"), LESS_THAN("<"), LESS_EQUALS("<="),
-    GREATER_EQUALS(">="), GREATER_THAN(">"), LEFT_PAREN("("), RIGHT_PAREN(")"),
-    LEFT_BRACKET("["), RIGHT_BRACKET("]"), LEFT_BRACE("{"), RIGHT_BRACE("}"),
-    UP_ARROW("^"), DOT_DOT(".."),
+    TILDA("~"), EXCLAIMATION("!"), AT("@"), PERCNTAGE("%"), AMPERSAND("&"),
+    HAT("^"), STAR("*"), DASH("-"), PLUS("+"), EQUALS("="), BAR("|"),
+    BACKWARD_SLASH("/"), COLOR(":"), SEMICOLON(";"), QUESTION_MARK("?"),
+    LEFT_ARROW("<"), RIGHT_ARROW(">"), PERIOD("."), COMMA(","),
+    SINGLE_QUOTATION("'"), DOUBLE_QUOTATION("\""), LEFT_PAREN("("),
+    RIGHT_PAREN(")"), LEFT_BRACKET("["), RIGHT_BRACKET("]"), LEFT_BRACE("{"),
+    RIGHT_BRACE("}"), PLUS_PLUS("++"), MINUS_MINUS("--"), SHIFT_LEFT("<<"),
+    SHIFT_RIGHT(">>"), LESS_THAN_OR_EQUAL("<="), GREATER_THAN_OR_EQUAL(">="),
+    PLUS_EQUALS("+="), MINUS_EQUALS("-="), TIMES_EQUALS("*="), DIVIDE_EQUALS("/="),
+    IS_EQUAL("=="), OR_EQUAL("|="), MOD_EQUAL("&="), BITWISE_EQUAL("^="), NOT_EQUAL("!="),
+    SHIFT_LEFT_EQUALS("<<="), SHIFT_RIGHT_EQUALS(">>="), OR("||"), AND("&&"),
+    SINGLE_LINE_COMMENT("//"), BEGIN_COMMENT("/*"), END_COMMENT("*/"),
 
     IDENTIFIER, INTEGER, REAL, STRING,
     ERROR, END_OF_FILE;
 
-    private static final int FIRST_RESERVED_INDEX = AND.ordinal();
-    private static final int LAST_RESERVED_INDEX  = WITH.ordinal();
-
-    private static final int FIRST_SPECIAL_INDEX = PLUS.ordinal();
-    private static final int LAST_SPECIAL_INDEX  = DOT_DOT.ordinal();
+//    private static final int FIRST_RESERVED_INDEX = AND.ordinal();
+//    private static final int LAST_RESERVED_INDEX  = WITH.ordinal();
+//
+//    private static final int FIRST_SPECIAL_INDEX = PLUS.ordinal();
+//    private static final int LAST_SPECIAL_INDEX  = DOT_DOT.ordinal();
 
     private String text;  // token text
 
@@ -68,22 +74,22 @@ public enum JavaTokenType implements TokenType
     }
 
     // Set of lower-cased Pascal reserved word text strings.
-    public static HashSet<String> RESERVED_WORDS = new HashSet<String>();
-    static {
-        JavaTokenType values[] = JavaTokenType.values();
-        for (int i = FIRST_RESERVED_INDEX; i <= LAST_RESERVED_INDEX; ++i) {
-            RESERVED_WORDS.add(values[i].getText().toLowerCase());
-        }
-    }
-
-    // Hash table of Pascal special symbols.  Each special symbol's text
-    // is the key to its Pascal token type.
-    public static Hashtable<String, JavaTokenType> SPECIAL_SYMBOLS =
-        new Hashtable<String, JavaTokenType>();
-    static {
-        JavaTokenType values[] = JavaTokenType.values();
-        for (int i = FIRST_SPECIAL_INDEX; i <= LAST_SPECIAL_INDEX; ++i) {
-            SPECIAL_SYMBOLS.put(values[i].getText(), values[i]);
-        }
-    }
+//    public static HashSet<String> RESERVED_WORDS = new HashSet<String>();
+//    static {
+//        JavaTokenType values[] = JavaTokenType.values();
+//        for (int i = FIRST_RESERVED_INDEX; i <= LAST_RESERVED_INDEX; ++i) {
+//            RESERVED_WORDS.add(values[i].getText().toLowerCase());
+//        }
+//    }
+//
+//    // Hash table of Pascal special symbols.  Each special symbol's text
+//    // is the key to its Pascal token type.
+//    public static Hashtable<String, JavaTokenType> SPECIAL_SYMBOLS =
+//        new Hashtable<String, JavaTokenType>();
+//    static {
+//        JavaTokenType values[] = JavaTokenType.values();
+//        for (int i = FIRST_SPECIAL_INDEX; i <= LAST_SPECIAL_INDEX; ++i) {
+//            SPECIAL_SYMBOLS.put(values[i].getText(), values[i]);
+//        }
+//    }
 }
