@@ -22,6 +22,7 @@ public enum PascalTokenType implements TokenType
     THEN, TO, TYPE, UNTIL, VAR, WHILE, WITH,
 
     // Special symbols.
+    
     PLUS("+"), MINUS("-"), STAR("*"), SLASH("/"), COLON_EQUALS(":="),
     DOT("."), COMMA(","), SEMICOLON(";"), COLON(":"), QUOTE("'"),
     EQUALS("="), NOT_EQUALS("<>"), LESS_THAN("<"), LESS_EQUALS("<="),
