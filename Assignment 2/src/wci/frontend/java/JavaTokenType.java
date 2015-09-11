@@ -39,11 +39,11 @@ public enum JavaTokenType implements TokenType
     IDENTIFIER, INTEGER, REAL, STRING,
     ERROR, END_OF_FILE;
 
-//    private static final int FIRST_RESERVED_INDEX = AND.ordinal();
-//    private static final int LAST_RESERVED_INDEX  = WITH.ordinal();
-//
-//    private static final int FIRST_SPECIAL_INDEX = PLUS.ordinal();
-//    private static final int LAST_SPECIAL_INDEX  = DOT_DOT.ordinal();
+    private static final int FIRST_RESERVED_INDEX = ABSTRACT.ordinal();
+    private static final int LAST_RESERVED_INDEX  = WHILE.ordinal();
+
+    private static final int FIRST_SPECIAL_INDEX = TILDA.ordinal();
+    private static final int LAST_SPECIAL_INDEX  = END_COMMENT.ordinal();
 
     private String text;  // token text
 
@@ -73,23 +73,20 @@ public enum JavaTokenType implements TokenType
         return text;
     }
 
-    // Set of lower-cased Pascal reserved word text strings.
-//    public static HashSet<String> RESERVED_WORDS = new HashSet<String>();
-//    static {
-//        JavaTokenType values[] = JavaTokenType.values();
-//        for (int i = FIRST_RESERVED_INDEX; i <= LAST_RESERVED_INDEX; ++i) {
-//            RESERVED_WORDS.add(values[i].getText().toLowerCase());
-//        }
-//    }
-//
-//    // Hash table of Pascal special symbols.  Each special symbol's text
-//    // is the key to its Pascal token type.
-//    public static Hashtable<String, JavaTokenType> SPECIAL_SYMBOLS =
-//        new Hashtable<String, JavaTokenType>();
-//    static {
-//        JavaTokenType values[] = JavaTokenType.values();
-//        for (int i = FIRST_SPECIAL_INDEX; i <= LAST_SPECIAL_INDEX; ++i) {
-//            SPECIAL_SYMBOLS.put(values[i].getText(), values[i]);
-//        }
-//    }
+    public static HashSet<String> RESERVED_WORDS = new HashSet<String>();
+    static {
+        JavaTokenType values[] = JavaTokenType.values();
+        for (int i = FIRST_RESERVED_INDEX; i <= LAST_RESERVED_INDEX; ++i) {
+            RESERVED_WORDS.add(values[i].getText().toLowerCase());
+        }
+    }
+
+    public static Hashtable<String, JavaTokenType> SPECIAL_SYMBOLS =
+        new Hashtable<String, JavaTokenType>();
+    static {
+        JavaTokenType values[] = JavaTokenType.values();
+        for (int i = FIRST_SPECIAL_INDEX; i <= LAST_SPECIAL_INDEX; ++i) {
+            SPECIAL_SYMBOLS.put(values[i].getText(), values[i]);
+        }
+    }
 }
