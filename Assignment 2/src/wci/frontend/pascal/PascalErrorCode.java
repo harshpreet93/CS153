@@ -112,4 +112,16 @@ public enum PascalErrorCode
     {
         return message;
     }
+    
+    /** This main function is to do some 
+     * basic tests with the PascalErrorCode and
+     * how it works. 
+     * 
+     * @param args
+     */
+    public static void main(String [] args) {
+    	System.out.println(PascalErrorCode.ALREADY_FORWARDED.toString());
+    	System.out.println(PascalErrorCode.IO_ERROR.toString());
+    	PascalErrorCode x = PascalErrorCode.ALREADY_FORWARDED;
+    }
 }

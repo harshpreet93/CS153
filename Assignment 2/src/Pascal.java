@@ -33,6 +33,7 @@ public class Pascal
      */
     public Pascal(String operation, String filePath, String flags)
     {
+    	System.out.println("hello");
         try {
             boolean intermediate = flags.indexOf('i') > -1;
             boolean xref         = flags.indexOf('x') > -1;
@@ -73,7 +74,7 @@ public class Pascal
     {
         try {
             String operation = args[0];
-
+            System.out.println(args[0]);
             // Operation.
             if (!(   operation.equalsIgnoreCase("compile")
                   || operation.equalsIgnoreCase("execute"))) {
@@ -87,6 +88,7 @@ public class Pascal
             while ((++i < args.length) && (args[i].charAt(0) == '-')) {
                 flags += args[i].substring(1);
             }
+            
 
             // Source path.
             if (i < args.length) {

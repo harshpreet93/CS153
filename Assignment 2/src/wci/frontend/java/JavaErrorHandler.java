@@ -3,17 +3,13 @@ package wci.frontend.java;
 import wci.frontend.*;
 import wci.message.Message;
 
-import static wci.frontend.java.JavaTokenType.*;
-//import static wci.frontend.java.JavaErrorCode.*;
 import static wci.message.MessageType.SYNTAX_ERROR;
-//dfsa;fasdj;
+
 /**
- * <h1>PascalErrorHandler</h1>
+ * <h1>JavaErrorHandler</h1>
  *
- * <p>Error handler Pascal syntax errors.</p>
+ * <p>Error handler Java syntax errors.</p>
  *
- * <p>Copyright (c) 2009 by Ronald Mak</p>
- * <p>For instructional purposes only.  No warranties.</p>
  */
 public class JavaErrorHandler
 {
@@ -37,19 +33,18 @@ public class JavaErrorHandler
      * @param parser the parser.
      * @return the flagger string.
      */
-    public void flag(Token token, /*JavaErrorCode errorCode,*/ Parser parser)
+    public void flag(Token token, JavaErrorCode errorCode, Parser parser)
     {
         // Notify the parser's listeners.
         parser.sendMessage(new Message(SYNTAX_ERROR,
                                        new Object[] {token.getLineNumber(),
                                                      token.getPosition(),
                                                      token.getText(),
-                                                     /*errorCode.toString()*/}));
+                                                     errorCode.toString()}));
 
-//        if (++errorCount > MAX_ERRORS) {
-//        	TODO add java ErrorCode
-//            abortTranslation(TOO_MANY_ERRORS, parser);
-//        }
+        if (++errorCount > MAX_ERRORS) {
+            abortTranslation(token, JavaErrorCode.TOO_MANY_ERRORS, parser);
+        }
     }
 
     /**
@@ -57,15 +52,16 @@ public class JavaErrorHandler
      * @param errorCode the error code.
      * @param parser the parser.
      */
-    public void abortTranslation(/*PascalErrorCode errorCode,*/ Parser parser)
+    public void abortTranslation(Token token, JavaErrorCode errorCode, Parser parser)
     {
         // Notify the parser's listeners and then abort.
-        String fatalText = "FATAL ERROR: "/* + errorCode.toString()*/;
+        String fatalText = "FATAL ERROR: " + errorCode.toString();
         parser.sendMessage(new Message(SYNTAX_ERROR,
-                                       new Object[] {0,
-                                                     0,
-                                                     "",
-                                                     fatalText}));
-        //System.exit(errorCode.getStatus());
+                new Object[] {token.getLineNumber(),
+                              token.getPosition(),
+                              token.getText(),
+                              fatalText}));
+        // exit program is error code is < 0 
+        System.exit(errorCode.getStatus());
     }
 }
