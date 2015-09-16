@@ -13,6 +13,7 @@ import wci.message.*;
  * <p>Copyright (c) 2009 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
+
 public abstract class Parser implements MessageProducer
 {
     protected static SymTab symTab;                  // generated symbol table

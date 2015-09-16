@@ -7,6 +7,7 @@ import static wci.frontend.pascal.PascalTokenType.*;
 import static wci.frontend.pascal.PascalErrorCode.*;
 import static wci.message.MessageType.*;
 
+
 /**
  * <h1>PascalParserTD</h1>
  *
@@ -26,7 +27,7 @@ public class PascalParserTD extends Parser
     public PascalParserTD(Scanner scanner)
     {
         super(scanner);
-    }
+    } 
 
     /**
      * Parse a Pascal source program and generate the symbol table

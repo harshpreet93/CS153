@@ -6,22 +6,22 @@ import java.util.HashSet;
 import wci.frontend.TokenType;
 
 /**
- * <h1>PascalTokenType</h1>
+ * <h1>JavaTokenType</h1>
  *
- * <p>Pascal token types.</p>
- *
- * <p>Copyright (c) 2009 by Ronald Mak</p>
- * <p>For instructional purposes only.  No warranties.</p>
+ * <p>Java token types.</p>
+ * 
+ * This class contains all the Reserved words,
+ * Special symbols, and 
  */
 public enum JavaTokenType implements TokenType
 {
-    // Reserved words.
+    // Reserved words token types.
     ABSTRACT, BREAK, CASE, CHAR, CLASS, CONST, CONTINUE, DO, DOUBLE, ELSE,
     ENUM, EXTENDS, FLOAT, FOR, GOTO, IF, INT, LONG, NATIVE, RETURN,
     SHORT, PACKAGE, PUBLIC, PROTECTED, PRIVATE, STATIC, SWITCH, SUPER, THIS, THROW,
     VOID, VOLATILE, WHILE,
 
-    // Special symbols.
+    // Special symbols token types.
     
     TILDA("~"), EXCLAIMATION("!"), AT("@"), PERCNTAGE("%"), AMPERSAND("&"),
     HAT("^"), STAR("*"), DASH("-"), PLUS("+"), EQUALS("="), BAR("|"),
@@ -36,6 +36,7 @@ public enum JavaTokenType implements TokenType
     SHIFT_LEFT_EQUALS("<<="), SHIFT_RIGHT_EQUALS(">>="), OR("||"), AND("&&"),
     SINGLE_LINE_COMMENT("//"), BEGIN_COMMENT("/*"), END_COMMENT("*/"),
 
+    //Token types 
     IDENTIFIER, INTEGER, REAL, STRING,
     ERROR, END_OF_FILE;
 
