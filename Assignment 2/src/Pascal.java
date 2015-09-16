@@ -39,6 +39,9 @@ public class Pascal
             boolean xref         = flags.indexOf('x') > -1;
 
             source = new Source(new BufferedReader(new FileReader(filePath)));
+            /* The source class will send a message to ParserMessageListener
+             * after Source does a readLine() on the BufferReader
+             */
             source.addMessageListener(new SourceMessageListener());
 
             parser = FrontendFactory.createParser("Pascal", "top-down", source);
