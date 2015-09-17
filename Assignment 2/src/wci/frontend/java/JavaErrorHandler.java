@@ -64,4 +64,15 @@ public class JavaErrorHandler
         // exit program is error code is < 0 
         System.exit(errorCode.getStatus());
     }
+    
+    /**
+     * Aborts the translation if no token was given
+     * @param errorCode the error code
+     * @param parser the parser
+     */
+    public void abortNoToken(JavaErrorCode errorCode, Parser parser)
+    {
+    	String fatalText = "FATAL ERROR: " + errorCode.toString();
+    	System.exit(errorCode.getStatus());
+    }
 }

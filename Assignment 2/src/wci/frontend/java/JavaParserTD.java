@@ -4,6 +4,7 @@ import wci.frontend.*;
 import wci.message.Message;
 
 import static wci.frontend.java.JavaTokenType.*;
+import static wci.frontend.java.JavaErrorCode.*;
 import static wci.message.MessageType.*;
 
 /**
@@ -16,8 +17,7 @@ import static wci.message.MessageType.*;
  */
 public class JavaParserTD extends Parser
 {
-	//TODO error handling
-    //protected static PascalErrorHandler errorHandler = new PascalErrorHandler();
+    protected static JavaErrorHandler errorHandler = new JavaErrorHandler();
 
     /**
      * Constructor.
@@ -54,8 +54,7 @@ public class JavaParserTD extends Parser
                                                           token.getValue()}));
                 }
                 else {
-                	//TODO error handling
-                    //errorHandler.flag(token, (PascalErrorCode) token.getValue(), this);
+                    errorHandler.flag(token, (JavaErrorCode) token.getValue(), this);
                 }
 
             }
@@ -68,8 +67,7 @@ public class JavaParserTD extends Parser
                                                   elapsedTime}));
         }
         catch (java.io.IOException ex) {
-        	//TODO error handling
-            //errorHandler.abortTranslation(IO_ERROR, this);
+            errorHandler.abortNoToken(IO_ERROR, this);
         }
     }
 
@@ -79,8 +77,6 @@ public class JavaParserTD extends Parser
      */
     public int getErrorCount()
     {
-    	//TODO error handling
-        //return errorHandler.getErrorCount();
-    	return 0;
+        return errorHandler.getErrorCount();
     }
 }
