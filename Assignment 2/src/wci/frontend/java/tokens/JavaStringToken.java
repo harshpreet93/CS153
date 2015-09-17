@@ -6,7 +6,7 @@ import wci.frontend.java.*;
 import static wci.frontend.Source.EOL;
 import static wci.frontend.Source.EOF;
 import static wci.frontend.java.JavaTokenType.*;
-import static wci.frontend.pascal.PascalErrorCode.*; //This needs to be changed to import static wci.frontend.java.JavaErrorCode.*
+import static wci.frontend.java.JavaErrorCode.*; //This needs to be changed to import static wci.frontend.java.JavaErrorCode.*
 
 /**
  * <h1>PascalStringToken</h1>

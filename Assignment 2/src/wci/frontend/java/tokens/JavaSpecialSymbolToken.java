@@ -4,7 +4,7 @@ import wci.frontend.*;
 import wci.frontend.java.*;
 
 import static wci.frontend.java.JavaTokenType.*;
-import static wci.frontend.pascal.PascalErrorCode.*; //This needs to be changed to JavaErrorCode, but JavaErrorCode is not done yet
+import static wci.frontend.java.JavaErrorCode.*; //This needs to be changed to JavaErrorCode, but JavaErrorCode is not done yet
 
 /**
  * <h1>PascalSpecialSymbolToken</h1>

@@ -57,15 +57,15 @@ public class JavaScanner extends Scanner {
             token = new EofToken(source);
         }
         // TODO uncomment this when JavaErrorToken and JavaErrorCode are completed.
-        //else {
-          //  token = new JavaErrorToken(source);
+        else {
+          token = new JavaErrorToken(source, JavaErrorCode.INVALID_EXPRESSION, ""+currentChar);
 
             /*
              We want to be able to continue to lex even after encountering an error, so when an error happens
              we just skip the offending character.
             */
-            //nextChar();
-        //}
+            nextChar();
+        }
 
         return token;
     }
@@ -79,9 +79,10 @@ public class JavaScanner extends Scanner {
     }
 
     private void skipSingleLineComment() throws Exception {
-        while (currentChar() != SINGLE_LINE_COMMENT_END)
-                nextChar();
-
+        while (source.peekChar() != SINGLE_LINE_COMMENT_END || source.peekChar() == Source.EOF) {
+            nextChar();
+        }
+//        nextChar();
     }
 
     private void skipMultiLineComment() throws Exception {
