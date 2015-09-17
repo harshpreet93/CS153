@@ -37,7 +37,7 @@ public enum JavaTokenType implements TokenType
     SINGLE_LINE_COMMENT("//"), BEGIN_COMMENT("/*"), END_COMMENT("*/"),
 
     //Token types 
-    IDENTIFIER, INTEGER, REAL, STRING,
+    IDENTIFIER, INTEGER, REAL, STRING, CHARACTER,
     ERROR, END_OF_FILE;
 
     private static final int FIRST_RESERVED_INDEX = ABSTRACT.ordinal();
