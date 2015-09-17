@@ -48,7 +48,7 @@ public class JavaWordToken extends JavaToken
         // Java reserved words are all lower case
         // Is it a reserved word or an identifier?
         type = (RESERVED_WORDS.contains(text.toLowerCase()))
-                ? JavaTokenType.valueOf(text.toLowerCase())  // reserved word
+                ? JavaTokenType.valueOf(text.toUpperCase())  // reserved word
                 : IDENTIFIER;                                  // identifier
     }
 }
