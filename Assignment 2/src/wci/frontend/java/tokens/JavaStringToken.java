@@ -55,7 +55,7 @@ public class JavaStringToken extends JavaToken
                 currentChar = ' ';
             }
 
-            if ((currentChar != '\"') && (currentChar != EOF)) {
+            if (currentChar() != '\\' && (currentChar != '\"') && (currentChar != EOF)) {
                 textBuffer.append(currentChar);
                 valueBuffer.append(currentChar);
                 currentChar = nextChar();  // consume character
@@ -64,23 +64,69 @@ public class JavaStringToken extends JavaToken
             // a backslash followed by a double quote is a double quote character
             //take care of a case such as "\""
             if (currentChar == '\\') {
-                while ((currentChar == '\\') && (peekChar() == '\"')) {
-                    textBuffer.append("\\\"");
-                    valueBuffer.append(currentChar); // append double-quote
-                    currentChar = nextChar();        // consume the escape character and the following character
-                    currentChar = nextChar();
+//                while ((currentChar == '\\') && (peekChar() == '\"')) {
+//                    textBuffer.append("\\\"");
+//                    valueBuffer.append(peekChar()); // append double-quote
+////                    currentChar = nextChar();        // consume the escape character and the following character
+//                    nextChar();
+////                    currentChar = nextChar();
+//                }
+                switch (peekChar()){
+                    case 't': valueBuffer.append('\t');
+                        textBuffer.append("\\t");
+                        nextChar();
+                        currentChar = nextChar();
+                        break;
+                    case 'n': valueBuffer.append('\n');
+                        textBuffer.append("\\n");
+                        nextChar();
+                        currentChar = nextChar();
+                        break;
+                    case 'r': valueBuffer.append('\r');
+                        textBuffer.append("\\r");
+                        nextChar();
+                        currentChar = nextChar();
+                        break;
+                    case 'f': valueBuffer.append('\f');
+                        textBuffer.append("\\f");
+                        nextChar();
+                        currentChar = nextChar();
+                        break;
+                    case '\'': valueBuffer.append('\'');
+                        textBuffer.append( "\\\'" );
+                        nextChar();
+                        currentChar = nextChar();
+                        break;
+                    case '\"': valueBuffer.append('\"');
+                        textBuffer.append( "\\\"" );
+                        nextChar();
+                        currentChar = nextChar();
+                        break;
+                    case '\\': valueBuffer.append('\\');
+                        textBuffer.append( "\\\\");
+                        nextChar();
+                        currentChar = nextChar();
+                        break;
+                    case 'b': valueBuffer.append('\b');
+                        textBuffer.append("\\b");
+                        nextChar();
+                        currentChar = nextChar();
+                        break;
+                    default: //TODO: add error handling for unknown characters
+                        break;
+
                 }
             }
 
             //take care of a case such as "\\"
-            if(currentChar == '\\') {
-                while ((currentChar == '\\') && (peekChar() == '\\')) {
-                    textBuffer.append("\\\\");
-                    valueBuffer.append(currentChar); // append double-quote
-                    currentChar = nextChar();        // consume the escape character and the following character
-                    currentChar = nextChar();
-                }
-            }
+//            if(currentChar == '\\') {
+//                while ((currentChar == '\\') && (peekChar() == '\\')) {
+//                    textBuffer.append("\\\\");
+//                    valueBuffer.append(currentChar); // append double-quote
+//                    currentChar = nextChar();        // consume the escape character and the following character
+//                    currentChar = nextChar();
+//                }
+//            }
         } while ((currentChar != '\"') && (currentChar != EOF));
 
         if (currentChar == '\"') {
