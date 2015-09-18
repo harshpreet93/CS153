@@ -19,8 +19,7 @@ public class JavaCharacterToken extends JavaToken {
     public JavaCharacterToken(Source source) throws Exception {
         super(source);
     }
-
-    // TODO we need this to be able to identify escape characters (READ THE ASSIGNMENT INSTRUCTIONS FOR MORE INFO)
+    
     @Override
     protected void extract() throws Exception {
 //        char consumed = nextChar(); // Consume starting quote.
