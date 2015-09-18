@@ -67,6 +67,7 @@ public class JavaCharacterToken extends JavaToken {
                     textString += "\\\\\'";
                     break;
                 case 'b': valueString += '\b';
+                    textString += "\\b\'";
                     break;
                 default: //TODO: add error handling for unknown characters
                     break;
