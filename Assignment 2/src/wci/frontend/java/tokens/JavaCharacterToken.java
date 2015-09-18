@@ -78,6 +78,7 @@ public class JavaCharacterToken extends JavaToken {
             textString = "\'"+currentChar+ "\'";
             valueString += currentChar;
         }
+        valueString = "\'"+valueString+"\'";
 //        System.out.println("value: "+valueString);
         text = textString;
         currentChar = nextChar();
