@@ -31,7 +31,7 @@ public class JavaScanner extends Scanner {
 
         Token token = null;
         char currentChar = currentChar();
-        if (Character.isLetter(currentChar)) {
+        if (Character.isLetter(currentChar) || currentChar == '_') {
             token = new JavaWordToken(source);
         }
         else if (Character.isDigit(currentChar)) {
