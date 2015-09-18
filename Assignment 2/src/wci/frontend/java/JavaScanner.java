@@ -87,12 +87,10 @@ public class JavaScanner extends Scanner {
         while (source.peekChar() != SINGLE_LINE_COMMENT_END) {
             nextChar();
         }
-        nextChar();
-        while ( currentChar() == Source.EOL)         nextChar();
     }
 
     private void skipMultiLineComment() throws Exception {
-        while (!currentTwoCharString().equals(MULTI_LINE_COMMENT_END) | currentChar() == Source.EOL) {
+        while (!currentTwoCharString().equals(MULTI_LINE_COMMENT_END)) {
             if (currentChar() == Source.EOF)
                 throw new UnexpectedEndOfFileException();
             else
@@ -106,7 +104,6 @@ public class JavaScanner extends Scanner {
         }
         else if (currentTwoCharString().equals(MULTI_LINE_COMMENT_START)){
         	skipMultiLineComment();
-
         }
     }
 
@@ -114,9 +111,15 @@ public class JavaScanner extends Scanner {
         while (Character.isWhitespace(currentChar()))
             nextChar();
     }
-
+    
     private void skipIgnorableCharacters() throws Exception {
-        skipWhiteSpace();
-        skipComments();
+        boolean hasSkippedChars;
+        do {
+            int startPosition = source.getPosition();
+            skipWhiteSpace();
+            skipComments();
+            int endPosition = source.getPosition();
+            hasSkippedChars = startPosition != endPosition;
+        } while (hasSkippedChars);
     }
 }
