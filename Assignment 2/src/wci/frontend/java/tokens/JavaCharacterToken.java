@@ -30,6 +30,7 @@ public class JavaCharacterToken extends JavaToken {
                 throw new UnexpectedEndOfFileException();
             else
                 valueString += Character.toString(currentChar);
+            currentChar = nextChar();
         }
         type = JavaTokenType.CHARACTER;
         value = valueString;
