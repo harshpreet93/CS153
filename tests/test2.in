@@ -1,0 +1,3 @@
+// Character tokens
+'x' 'A' '\'' 'a' '\n' '\t' '\\'
+""  "\""
