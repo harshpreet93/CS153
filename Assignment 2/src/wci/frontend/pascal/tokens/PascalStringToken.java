@@ -52,7 +52,7 @@ public class PascalStringToken extends PascalToken
             if ((currentChar != '\'') && (currentChar != EOF)) {
                 textBuffer.append(currentChar);
                 valueBuffer.append(currentChar);
-                currentChar = nextChar();  // consume character
+                currentChar = nextChar();  // consume character 
             }
 
             // Quote?  Each pair of adjacent quotes represents a single-quote.

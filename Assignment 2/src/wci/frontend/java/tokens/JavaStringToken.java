@@ -6,6 +6,12 @@ import wci.frontend.java.*;
 import static wci.frontend.Source.EOL;
 import static wci.frontend.Source.EOF;
 import static wci.frontend.java.JavaTokenType.*;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 import static wci.frontend.java.JavaErrorCode.*; //This needs to be changed to import static wci.frontend.java.JavaErrorCode.*
 
 /**
@@ -89,6 +95,20 @@ public class JavaStringToken extends JavaToken
             value = UNEXPECTED_EOF;
         }
 
+        	
         text = textBuffer.toString();
+        System.out.println(text);
     }
+    
+/*  
+    public static void main(String args[]) throws Exception {
+    	String aPath = "/Users/udaiveer/Desktop/School/compilers/compilerProject/CS153/tests/test3.in";
+
+    	Source aSource = new Source(new BufferedReader(new FileReader(aPath)));
+    	aSource.nextChar();
+    	JavaStringToken tmp = new JavaStringToken(aSource); 
+    	tmp.extract();
+
+    }
+*/
 }
