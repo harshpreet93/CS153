@@ -1,11 +1,10 @@
 package wci.frontend.java.tokens;
 
 import wci.frontend.Source;
-import wci.frontend.error.UnexpectedEndOfFileException;
 import wci.frontend.java.JavaToken;
 import wci.frontend.java.JavaTokenType;
 
-import static wci.frontend.java.JavaErrorCode.UNEXPECTED_EOF;
+import static wci.frontend.java.JavaErrorCode.INVALID_CHARACTER;
 import static wci.frontend.java.JavaTokenType.ERROR;
 
 public class JavaCharacterToken extends JavaToken {
@@ -44,7 +43,8 @@ public class JavaCharacterToken extends JavaToken {
         if(currentChar == '\\'){
 //            valueString += currentChar;
 //            valueString += nextChar();
-            switch (nextChar()){
+            char escapedCharacter = nextChar();
+            switch (escapedCharacter){
                 case 't': valueString += '\t';
                     textString += "\\t\'";
                     break;
@@ -69,9 +69,11 @@ public class JavaCharacterToken extends JavaToken {
                 case 'b': valueString += '\b';
                     textString += "\\b\'";
                     break;
-                default: //TODO: add error handling for unknown characters
-                    break;
-
+                default:
+                    text = Character.toString(escapedCharacter);
+                    type = ERROR;
+                    value = INVALID_CHARACTER;
+                    return;
             }
         }
         else {
@@ -84,12 +86,12 @@ public class JavaCharacterToken extends JavaToken {
         currentChar = nextChar();
         if(currentChar != '\''){
             type = ERROR;
-            value = UNEXPECTED_EOF;
+            value = INVALID_CHARACTER;
         }
         else {
             nextChar();
+            type = JavaTokenType.CHARACTER;
+            value = valueString;
         }
-        type = JavaTokenType.CHARACTER;
-        value = valueString;
     }
 }
