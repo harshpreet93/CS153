@@ -36,7 +36,6 @@ public class FrontendFactory
         else if(language.equalsIgnoreCase("Java") &&
                 type.equalsIgnoreCase("top-down")) 
         {
-            System.out.println("java");
             Scanner scanner = new JavaScanner(source);
             return new JavaParserTD(scanner); // new JavaParserTD(scanner);
         }

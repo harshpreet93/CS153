@@ -78,15 +78,21 @@ public class JavaScanner extends Scanner {
         return new String(new char[] {currentChar(), source.peekChar()});
     }
 
+    /**
+     * This function skips all characters after the single comment including any
+     * new lines with no characters in them 
+     * @throws Exception
+     */
     private void skipSingleLineComment() throws Exception {
-        while (source.peekChar() != SINGLE_LINE_COMMENT_END || source.peekChar() == Source.EOF) {
+        while (source.peekChar() != SINGLE_LINE_COMMENT_END) {
             nextChar();
         }
-//        nextChar();
+        nextChar();
+        while ( currentChar() == Source.EOL)         nextChar();
     }
 
     private void skipMultiLineComment() throws Exception {
-        while (!currentTwoCharString().equals(MULTI_LINE_COMMENT_END)) {
+        while (!currentTwoCharString().equals(MULTI_LINE_COMMENT_END) | currentChar() == Source.EOL) {
             if (currentChar() == Source.EOF)
                 throw new UnexpectedEndOfFileException();
             else
@@ -95,10 +101,13 @@ public class JavaScanner extends Scanner {
     }
 
     private void skipComments() throws Exception {
-        if (currentTwoCharString().equals(SINGLE_LINE_COMMENT_START))
+        if (currentTwoCharString().equals(SINGLE_LINE_COMMENT_START)){
             skipSingleLineComment();
-        else if (currentTwoCharString().equals(MULTI_LINE_COMMENT_START))
-            skipMultiLineComment();
+        }
+        else if (currentTwoCharString().equals(MULTI_LINE_COMMENT_START)){
+        	skipMultiLineComment();
+
+        }
     }
 
     private void skipWhiteSpace() throws Exception {

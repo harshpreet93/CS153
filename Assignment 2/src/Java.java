@@ -33,7 +33,6 @@ public class Java
      */
     public Java(String operation, String filePath, String flags)
     {
-        System.out.println("hello");
         try {
             boolean intermediate = flags.indexOf('i') > -1;
             boolean xref         = flags.indexOf('x') > -1;
@@ -66,7 +65,7 @@ public class Java
 
     private static final String FLAGS = "[-ix]";
     private static final String USAGE =
-            "Usage: Pascal execute|compile " + FLAGS + " <source file path>";
+            "Usage: Pascal execute|F " + FLAGS + " <source file path>";
 
     /**
      * The main method.
@@ -77,7 +76,6 @@ public class Java
     {
         try {
             String operation = args[0];
-            System.out.println(args[0]);
             // Operation.
             if (!(   operation.equalsIgnoreCase("compile")
                     || operation.equalsIgnoreCase("execute"))) {
