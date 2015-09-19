@@ -26,7 +26,7 @@ public enum JavaTokenType implements TokenType
     TILDA("~"), EXCLAIMATION("!"), AT("@"), PERCNTAGE("%"), AMPERSAND("&"),
     HAT("^"), STAR("*"), DASH("-"), PLUS("+"), EQUALS("="), BAR("|"),
     BACKWARD_SLASH("/"), COLON(":"), SEMICOLON(";"), QUESTION_MARK("?"),
-    LEFT_ARROW("<"), RIGHT_ARROW(">"), PERIOD("."), COMMA(","),
+    LESS_THAN("<"), GREATER_THAN(">"), PERIOD("."), COMMA(","),
     SINGLE_QUOTATION("'"), DOUBLE_QUOTATION("\""), LEFT_PAREN("("),
     RIGHT_PAREN(")"), LEFT_BRACKET("["), RIGHT_BRACKET("]"), LEFT_BRACE("{"),
     RIGHT_BRACE("}"), PLUS_PLUS("++"), MINUS_MINUS("--"), SHIFT_LEFT("<<"),
