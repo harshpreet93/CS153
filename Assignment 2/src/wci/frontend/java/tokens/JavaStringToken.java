@@ -1,18 +1,13 @@
 package wci.frontend.java.tokens;
 
-import wci.frontend.*;
-import wci.frontend.java.*;
+import wci.frontend.Source;
+import wci.frontend.java.JavaToken;
 
-import static wci.frontend.Source.EOL;
 import static wci.frontend.Source.EOF;
-import static wci.frontend.java.JavaTokenType.*;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-
-import static wci.frontend.java.JavaErrorCode.*; //This needs to be changed to import static wci.frontend.java.JavaErrorCode.*
+import static wci.frontend.java.JavaErrorCode.INVALID_CHARACTER;
+import static wci.frontend.java.JavaErrorCode.UNEXPECTED_EOF;
+import static wci.frontend.java.JavaTokenType.ERROR;
+import static wci.frontend.java.JavaTokenType.STRING;
 
 /**
  * <h1>PascalStringToken</h1>
@@ -64,13 +59,6 @@ public class JavaStringToken extends JavaToken
             // a backslash followed by a double quote is a double quote character
             //take care of a case such as "\""
             if (currentChar == '\\') {
-//                while ((currentChar == '\\') && (peekChar() == '\"')) {
-//                    textBuffer.append("\\\"");
-//                    valueBuffer.append(peekChar()); // append double-quote
-////                    currentChar = nextChar();        // consume the escape character and the following character
-//                    nextChar();
-////                    currentChar = nextChar();
-//                }
                 switch (peekChar()){
                     case 't': valueBuffer.append('\t');
                         textBuffer.append("\\t");
@@ -120,15 +108,6 @@ public class JavaStringToken extends JavaToken
                 }
             }
 
-            //take care of a case such as "\\"
-//            if(currentChar == '\\') {
-//                while ((currentChar == '\\') && (peekChar() == '\\')) {
-//                    textBuffer.append("\\\\");
-//                    valueBuffer.append(currentChar); // append double-quote
-//                    currentChar = nextChar();        // consume the escape character and the following character
-//                    currentChar = nextChar();
-//                }
-//            }
         } while ((currentChar != '\"') && (currentChar != EOF));
 
         if (currentChar == '\"') {
@@ -143,20 +122,7 @@ public class JavaStringToken extends JavaToken
             value = UNEXPECTED_EOF;
         }
 
-        	
         text = textBuffer.toString();
         System.out.println(text);
     }
-    
-/*  
-    public static void main(String args[]) throws Exception {
-    	String aPath = "/Users/udaiveer/Desktop/School/compilers/compilerProject/CS153/tests/test3.in";
-
-    	Source aSource = new Source(new BufferedReader(new FileReader(aPath)));
-    	aSource.nextChar();
-    	JavaStringToken tmp = new JavaStringToken(aSource); 
-    	tmp.extract();
-
-    }
-*/
 }

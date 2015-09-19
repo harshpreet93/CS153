@@ -8,8 +8,6 @@ import static wci.frontend.java.JavaErrorCode.INVALID_CHARACTER;
 import static wci.frontend.java.JavaTokenType.ERROR;
 
 public class JavaCharacterToken extends JavaToken {
-    private static final char CHARACTER_END = '\'';
-
     /**
      * Constructor.
      *
@@ -22,26 +20,11 @@ public class JavaCharacterToken extends JavaToken {
     
     @Override
     protected void extract() throws Exception {
-//        char consumed = nextChar(); // Consume starting quote.
-//        System.out.println("consumed: "+consumed);
         String valueString = "";
         String textString = "\'";
-//        char currentChar = nextChar();
-//        while (currentChar != CHARACTER_END) {
-//            if (currentChar == Source.EOF)
-//                throw new UnexpectedEndOfFileException();
-//            else
-//                valueString += Character.toString(currentChar);
-//            currentChar = nextChar();
-//        }
-//        type = JavaTokenType.CHARACTER;
-//        value = valueString;
-//        nextChar(); // Consume ending quote.
 
         char currentChar = nextChar();
         if(currentChar == '\\'){
-//            valueString += currentChar;
-//            valueString += nextChar();
             char escapedCharacter = nextChar();
             switch (escapedCharacter){
                 case 't': valueString += '\t';
@@ -79,8 +62,8 @@ public class JavaCharacterToken extends JavaToken {
             textString = "\'"+currentChar+ "\'";
             valueString += currentChar;
         }
+
         valueString = "\'"+valueString+"\'";
-//        System.out.println("value: "+valueString);
         text = textString;
         currentChar = nextChar();
         if(currentChar != '\''){
