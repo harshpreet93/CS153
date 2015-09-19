@@ -56,7 +56,6 @@ public class JavaScanner extends Scanner {
         else if (currentChar == Source.EOF) {
             token = new EofToken(source);
         }
-        // TODO uncomment this when JavaErrorToken and JavaErrorCode are completed.
         else {
           token = new JavaErrorToken(source, JavaErrorCode.INVALID_EXPRESSION, ""+currentChar);
 
