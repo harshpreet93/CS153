@@ -112,9 +112,11 @@ public class JavaStringToken extends JavaToken
                         nextChar();
                         currentChar = nextChar();
                         break;
-                    default: //TODO: add error handling for unknown characters
-                        break;
-
+                    default:
+                        text = Character.toString(nextChar());
+                        type = ERROR;
+                        value = INVALID_CHARACTER;
+                        return;
                 }
             }
 
